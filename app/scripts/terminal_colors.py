@@ -9,4 +9,4 @@ class tcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-# print(f"{tcolors.WARNING}Color test!{tcolors.ENDC}")
+# print(f'{tcolors.WARNING}Color test!{tcolors.ENDC}')
