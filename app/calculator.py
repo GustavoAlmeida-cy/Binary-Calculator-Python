@@ -9,6 +9,12 @@ def multiple_choice_logic(a): # Check the option chosen by the user
     else:
         return False
 
+def is_binary(input_str): #Checks if the input string represents a valid binary number
+    for char in input_str:
+        if char not in '01.':
+            return False
+    return True
+
 # Program title
 print(f'{tcolors.HEADER}\n-----[ BINARY CALCULATOR ]-----\n{tcolors.ENDC}')
 
@@ -32,6 +38,13 @@ print(f'{tcolors.HEADER}\n| [ {msg[choice - 1]} ] {tcolors.ENDC}')
 # Reading user inputs
 first_num = input(f'{tcolors.HEADER}\n| Type the first number: {tcolors.ENDC}')
 second_num = input(f'{tcolors.HEADER}\n| Type the second number: {tcolors.ENDC}')
+
+# Check if the input is a valid binary number
+if not is_binary(first_num) or not is_binary(second_num):
+    while not is_binary(first_num) or not is_binary(second_num):
+        print(f'{tcolors.FAIL}\n| Invalid numbers! Please type other numbers{tcolors.ENDC}')
+        first_num = input(f'{tcolors.HEADER}\n| Type the first number: {tcolors.ENDC}')
+        second_num = input(f'{tcolors.HEADER}\n| Type the second number: {tcolors.ENDC}')
 
 # Logic of choice to choose what type of calculation the user wish
 match choice:
