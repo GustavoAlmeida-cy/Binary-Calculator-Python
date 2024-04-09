@@ -10,6 +10,9 @@ def multiple_choice_logic(a): # Check the option chosen by the user
         return False
 
 def is_binary(input_str): #Checks if the input string represents a valid binary number
+    if input_str == "" or input_str == " ":
+        return False
+    
     for char in input_str:
         if char not in '01.':
             return False
