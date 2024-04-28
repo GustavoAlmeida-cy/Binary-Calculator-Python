@@ -34,131 +34,106 @@ def is_fractional_zero(number): # Check if a fractional part of a number is iqua
     return fractional_part == '0'
 
 # Calculation functions - Decimal arithmetic
-def binary_addition(first_b_num:str, second_b_num:str): # Addition function    
+
+def binary_calculation_DA(first_b_num:str, second_b_num:str, choice):
     # Check which type of conversion will be
+    validator = False
+
     if is_float_binary(first_b_num) or is_float_binary(second_b_num): # If any number is a float number the following code wil be executed
-        # Check which the type of each one
+        # Check which type is and convert
         match is_float_binary(first_b_num): # If the first number is a float
             case True:
-                first_d_num = scripts.convert_functions.float_b_to_float_d(first_b_num) 
+                first_d_num = scripts.convert_functions.float_b_to_float_d(first_b_num) # Convert to float
             case False:
                 first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num) # Convert to integer
 
-        # Check which the type of each one
+        # Check which type is and convert
         match is_float_binary(second_b_num): # If the first number is a float
             case True:
                 second_d_num = scripts.convert_functions.float_b_to_float_d(second_b_num) # Convert to float
             case False:
                 second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num) # Convert to integer
 
-        # Decimal calculation and converting decimal to binary
-        decimal_result = round(first_d_num + second_d_num, 3)
-        binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
+        validator = True
     else:
-        # Converting binary to integer
-        first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
-        second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
+        validator = False
 
-        # Decimal calculation and converting decimal to binary
-        decimal_result = first_d_num + second_d_num
-        binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
+    match choice:
+        case 1:
+            if validator:
+                # Decimal calculation and converting decimal to binary
+                decimal_result = round(first_d_num + second_d_num, 3)
+                binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
+            
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} + {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} + {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+            else:
+                # Converting binary to integer
+                first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
+                second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
 
-    return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} + {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} + {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+                # Decimal calculation and converting decimal to binary
+                decimal_result = first_d_num + second_d_num
+                binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
 
-def binary_subtraction(first_b_num:str, second_b_num:str): # Subtraction function
-    # Check which type of conversion will be
-    if is_float_binary(first_b_num) or is_float_binary(second_b_num): # If any number is a float number the following code wil be executed
-        # Check which the type of each one
-        match is_float_binary(first_b_num): # If the first number is a float
-            case True:
-                first_d_num = scripts.convert_functions.float_b_to_float_d(first_b_num) 
-            case False:
-                first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num) # Convert to integer
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} + {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} + {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+        case 2:
+            if validator:
+                # Decimal calculation and converting decimal to binary
+                decimal_result = round(first_d_num - second_d_num, 3)
+                binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
+            
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} - {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} - {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+            else:
+                # Converting binary to integer
+                first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
+                second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
 
-        # Check which the type of each one
-        match is_float_binary(second_b_num): # If the first number is a float
-            case True:
-                second_d_num = scripts.convert_functions.float_b_to_float_d(second_b_num) # Convert to float
-            case False:
-                second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num) # Convert to integer
+                # Decimal calculation and converting decimal to binary
+                decimal_result = first_d_num - second_d_num
+                binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
 
-        # Decimal calculation and converting decimal to binary
-        decimal_result = round(first_d_num - second_d_num, 3)
-        binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
-    else:
-        # Converting binary to integer
-        first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
-        second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} - {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} - {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+        case 3:
+            if validator:
+                # Decimal calculation and converting decimal to binary
+                decimal_result = round(first_d_num * second_d_num, 3)
+                binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
+            
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} * {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} * {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+            else:
+                # Converting binary to integer
+                first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
+                second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
 
-        # Decimal calculation and converting decimal to binary
-        decimal_result = first_d_num - second_d_num
-        binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
+                # Decimal calculation and converting decimal to binary
+                decimal_result = first_d_num * second_d_num
+                binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
 
-    return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} - {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} - {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} * {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} * {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+        case 4:
+            if validator:
+                # Decimal calculation and converting decimal to binary
+                decimal_result = round(first_d_num / second_d_num, 3)
 
-def binary_multiplication(first_b_num:str, second_b_num:str): # Multiplication function
-    # Check which type of conversion will be
-    if is_float_binary(first_b_num) or is_float_binary(second_b_num): # If any number is a float number the following code wil be executed
-        # Check which the type of each one
-        match is_float_binary(first_b_num): # If the first number is a float
-            case True:
-                first_d_num = scripts.convert_functions.float_b_to_float_d(first_b_num) 
-            case False:
-                first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num) # Convert to integer
+                # Check if the fractional part of the result is iqual to 0 and if it return True convert the float number into intenger
+                if is_fractional_zero(decimal_result):
+                    decimal_result = int(decimal_result)
 
-        # Check which the type of each one
-        match is_float_binary(second_b_num): # If the first number is a float
-            case True:
-                second_d_num = scripts.convert_functions.float_b_to_float_d(second_b_num) # Convert to float
-            case False:
-                second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num) # Convert to integer
+                binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
+            
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} +/{second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} / {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+            else:
+                # Converting binary to integer
+                first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
+                second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
 
-        # Decimal calculation and converting decimal to binary
-        decimal_result = round(first_d_num * second_d_num, 3)
-        binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
-    else:
-        # Converting binary to integer
-        first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
-        second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
-    
-        # Decimal calculation and Converting Decimal to Binary
-        decimal_result = first_d_num * second_d_num
-        binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
+                # Decimal calculation and converting decimal to binary
+                decimal_result = round(first_d_num / second_d_num, 3)
 
-    return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} * {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} * {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+                # Check if the fractional part of the result is iqual to 0 and if it return True convert the float number into intenger
+                if is_fractional_zero(decimal_result):
+                    decimal_result = int(decimal_result)
 
-def binary_division(first_b_num:str, second_b_num:str): # Division function
-    # Check which type of conversion will be
-    if is_float_binary(first_b_num) or is_float_binary(second_b_num): # If any number is a float number the following code wil be executed
-        # Check which the type of each one
-        match is_float_binary(first_b_num): # If the first number is a float
-            case True:
-                first_d_num = scripts.convert_functions.float_b_to_float_d(first_b_num) 
-            case False:
-                first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num) # Convert to integer
+                binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
 
-        # Check which the type of each one
-        match is_float_binary(second_b_num): # If the first number is a float
-            case True:
-                second_d_num = scripts.convert_functions.float_b_to_float_d(second_b_num) # Convert to float
-            case False:
-                second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num) # Convert to integer
-
-        # Decimal calculation and converting decimal to binary
-        decimal_result = round(first_d_num / second_d_num, 3)
-        binary_result = scripts.convert_functions.float_d_to_float_b(decimal_result)
-    else:
-        # Converting binary to integer
-        first_d_num = scripts.convert_functions.binary_to_decimal(first_b_num)
-        second_d_num = scripts.convert_functions.binary_to_decimal(second_b_num)
-        
-        # Decimal calculation and Converting Decimal to Binary
-        decimal_result = round(first_d_num / second_d_num, 3)
-        
-        # Check if the fractional part of the result is iqual to 0 and if it return True convert the float number into intenger
-        if is_fractional_zero(decimal_result):
-            decimal_result = int(decimal_result)
-        
-        binary_result = scripts.convert_functions.decimal_to_binary(decimal_result)
-
-    return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} / {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} / {second_b_num} = {binary_result}\n{tcolors.ENDC}')
+                return print(f'{tcolors.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} / {second_d_num} = {decimal_result}{tcolors.ENDC}'), print(f'{tcolors.OKGREEN}\n| [Binary result]: The addition of {first_b_num} / {second_b_num} = {binary_result}\n{tcolors.ENDC}')
