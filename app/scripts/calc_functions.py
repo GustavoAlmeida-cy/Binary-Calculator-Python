@@ -4,8 +4,7 @@ import scripts.convert_functions as ConF # Bring the convert functions
 import scripts.basic_functions as BF # Bring the basic functions
 
 
-# Calculation functions - Decimal arithmetic
-
+# Calculation functions - Decimal Arithmetic
 def binary_calculation_DA(first_b_num:str, second_b_num:str, choice):
     # Check which type of conversion will be
     validator = False
@@ -53,7 +52,7 @@ def binary_calculation_DA(first_b_num:str, second_b_num:str, choice):
                 decimal_result = round(first_d_num - second_d_num, 3)
                 binary_result = ConF.float_d_to_float_b(decimal_result)
             
-                return print(f'{TC.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} - {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The addition of {first_b_num} - {second_b_num} = {binary_result}\n{TC.ENDC}')
+                return print(f'{TC.OKCYAN}\n| [Decimal result]: The subtraction of {first_d_num} - {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The subtraction of {first_b_num} - {second_b_num} = {binary_result}\n{TC.ENDC}')
             else:
                 # Converting binary to integer
                 first_d_num = ConF.binary_to_decimal(first_b_num)
@@ -63,14 +62,14 @@ def binary_calculation_DA(first_b_num:str, second_b_num:str, choice):
                 decimal_result = first_d_num - second_d_num
                 binary_result = ConF.decimal_to_binary(decimal_result)
 
-                return print(f'{TC.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} - {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The addition of {first_b_num} - {second_b_num} = {binary_result}\n{TC.ENDC}')
+                return print(f'{TC.OKCYAN}\n| [Decimal result]: The subtraction of {first_d_num} - {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The subtraction of {first_b_num} - {second_b_num} = {binary_result}\n{TC.ENDC}')
         case 3:
             if validator:
                 # Decimal calculation and converting decimal to binary
                 decimal_result = round(first_d_num * second_d_num, 3)
                 binary_result = ConF.float_d_to_float_b(decimal_result)
             
-                return print(f'{TC.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} * {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The addition of {first_b_num} * {second_b_num} = {binary_result}\n{TC.ENDC}')
+                return print(f'{TC.OKCYAN}\n| [Decimal result]: The multiplication of {first_d_num} * {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The multiplication of {first_b_num} * {second_b_num} = {binary_result}\n{TC.ENDC}')
             else:
                 # Converting binary to integer
                 first_d_num = ConF.binary_to_decimal(first_b_num)
@@ -80,7 +79,7 @@ def binary_calculation_DA(first_b_num:str, second_b_num:str, choice):
                 decimal_result = first_d_num * second_d_num
                 binary_result = ConF.decimal_to_binary(decimal_result)
 
-                return print(f'{TC.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} * {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The addition of {first_b_num} * {second_b_num} = {binary_result}\n{TC.ENDC}')
+                return print(f'{TC.OKCYAN}\n| [Decimal result]: The multiplication of {first_d_num} * {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The multiplication of {first_b_num} * {second_b_num} = {binary_result}\n{TC.ENDC}')
         case 4:
             if validator:
                 # Decimal calculation and converting decimal to binary
@@ -92,7 +91,7 @@ def binary_calculation_DA(first_b_num:str, second_b_num:str, choice):
 
                 binary_result = ConF.float_d_to_float_b(decimal_result)
             
-                return print(f'{TC.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} +/{second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The addition of {first_b_num} / {second_b_num} = {binary_result}\n{TC.ENDC}')
+                return print(f'{TC.OKCYAN}\n| [Decimal result]: The division of {first_d_num} +/{second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The division of {first_b_num} / {second_b_num} = {binary_result}\n{TC.ENDC}')
             else:
                 # Converting binary to integer
                 first_d_num = ConF.binary_to_decimal(first_b_num)
@@ -107,4 +106,16 @@ def binary_calculation_DA(first_b_num:str, second_b_num:str, choice):
 
                 binary_result = ConF.decimal_to_binary(decimal_result)
 
-                return print(f'{TC.OKCYAN}\n| [Decimal result]: The addition of {first_d_num} / {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The addition of {first_b_num} / {second_b_num} = {binary_result}\n{TC.ENDC}')
+                return print(f'{TC.OKCYAN}\n| [Decimal result]: The division of {first_d_num} / {second_d_num} = {decimal_result}{TC.ENDC}'), print(f'{TC.OKGREEN}\n| [Binary result]: The division of {first_b_num} / {second_b_num} = {binary_result}\n{TC.ENDC}')
+
+# Calculation functions - Binary Arithmetic
+def binary_calculation_BA(first_b_num:str, second_b_num:str, choice):
+    match choice:
+        case 1:
+            return 1
+        case 2:
+            return 2
+        case 3:
+            return 3
+        case 4:
+            return 4
