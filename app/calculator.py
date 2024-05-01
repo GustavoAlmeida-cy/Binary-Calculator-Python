@@ -6,18 +6,18 @@ import scripts.basic_functions as BF # Bring the basic functions
 def main():
     # Multiple choice message and logic
     print(f'{TC.WARNING}\n| What type of calculation do you wish? (type the correct number corresponding to the right option){TC.ENDC}')
-    choice = input((f'{TC.WARNING}\n| 1. Addition\n| 2. Subtraction\n| 3. Multiplication\n| 4. Division\n\n| : {TC.ENDC}'))
+    choice = input((f'{TC.WARNING}\n| 1. Addition\n| 2. Subtraction\n| 3. Multiplication\n\n| : {TC.ENDC}'))
 
     mult_ch_logic_value = BF.multiple_choice_logic(choice)
 
     if mult_ch_logic_value: # Validates whether the option chosen by the user is correct
         while mult_ch_logic_value:
             print(f'{TC.FAIL}\n| Invalid choice! Please type other option{TC.ENDC}')
-            choice = input((f'{TC.WARNING}\n| 1. Addition\n| 2. Subtraction\n| 3. Multiplication\n| 4. Division\n\n| : {TC.ENDC}'))
+            choice = input((f'{TC.WARNING}\n| 1. Addition\n| 2. Subtraction\n| 3. Multiplication\n\n| : {TC.ENDC}'))
             mult_ch_logic_value = BF.multiple_choice_logic(choice)
 
     choice = int(choice)
-    msg = ['ADDITION', 'SUBTRACTION', 'MULTIPLICATION', 'DIVISION']
+    msg = ['ADDITION', 'SUBTRACTION', 'MULTIPLICATION']
 
     print(f'{TC.HEADER}\n| [ {msg[choice - 1]} ] {TC.ENDC}')
 
@@ -35,13 +35,11 @@ def main():
     # Logic of choice to choose what type of calculation the user wish
     match choice:
         case 1:
-            CF.binary_calculation_DA(first_num, second_num, 1)
+            CF.binary_calculation_BA(first_num, second_num, 1)
         case 2:
-            CF.binary_calculation_DA(first_num, second_num, 2)
+            CF.binary_calculation_BA(first_num, second_num, 2)
         case 3:
-            CF.binary_calculation_DA(first_num, second_num, 3)
-        case 4:
-            CF.binary_calculation_DA(first_num, second_num, 4)
+            CF.binary_calculation_BA(first_num, second_num, 3)
 
 # Program title
 print(f'{TC.HEADER}\n-----[ BINARY CALCULATOR ]-----\n{TC.ENDC}')
