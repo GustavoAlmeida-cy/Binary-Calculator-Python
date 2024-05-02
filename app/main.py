@@ -45,7 +45,7 @@ def app():
 # Program start
 if __name__ == "__main__":
     # Program title
-    print(f'{TC.HEADER}\n-----[ BINARY CALCULATOR ]-----\n{TC.ENDC}')
+    print(f'{TC.HEADER}\n|========================================[ BINARY CALCULATOR ]=======================================|\n{TC.ENDC}')
 
     choice = "Y"
     while choice == "Y":
@@ -61,4 +61,4 @@ if __name__ == "__main__":
                 controller = BF.multiple_choice_YN(choice)
                 
     # Program footer
-    print(f'{TC.HEADER}\n-------[ PROGRAM END ]-------\n{TC.ENDC}')
+    print(f'{TC.HEADER}\n|===========================================[ PROGRAM END ]==========================================|\n{TC.ENDC}')
