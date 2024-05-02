@@ -139,6 +139,7 @@ def binary_multiplication(bin1, bin2):
 
     return result
 
+# Multiple choice function for calculations
 def binary_calculation_BA(first_b_num:str, second_b_num:str, choice):
     match choice:
         case 1:

@@ -11,7 +11,7 @@ def multiple_choice_YN(choice): # Check the option chosen by the user
     else:
         return False
     
-def is_binary(input_str): #Checks if the input string represents a valid binary number
+def is_binary(input_str): # Check if the input string represents a valid binary number
     if input_str == "" or input_str == " ":
         return False
         
