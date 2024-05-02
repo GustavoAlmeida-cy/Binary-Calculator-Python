@@ -1,9 +1,5 @@
 # Importing scripts
 from scripts.terminal_colors import tcolors as TC# Enable terminal colors
-import scripts.convert_functions as ConF # Bring the convert functions
-import scripts.basic_functions as BF # Bring the basic functions
-
-# Calculation functions - Binary Arithmetic
 
 # Calculation functions
 def binary_addition(bin1, bin2):
@@ -116,6 +112,10 @@ def binary_multiplication(bin1, bin2):
             result.append(str(carry))
         return ''.join(result[::-1])
 
+    # Check if one of both binary numbers are all zeros
+    if all(bit == '0' for bit in bin1) or all(bit == '0' for bit in bin2):
+        return '00000000'
+
     # Remove leading zeros
     bin1 = bin1.lstrip('0')
     bin2 = bin2.lstrip('0')
@@ -133,7 +133,7 @@ def binary_multiplication(bin1, bin2):
 
     # Ensure result is 8 bits long
     if len(result) > 8:
-        raise ValueError(f'Result exceeds 8 bits')
+        raise ValueError(f'{TC.FAIL}\n| [ Binary addition result exceeds 8 bits ]\n{TC.ENDC}')
     else:
         result = result.zfill(8)
 
