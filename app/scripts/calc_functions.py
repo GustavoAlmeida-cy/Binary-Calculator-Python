@@ -1,5 +1,8 @@
 # Importing scripts
-from scripts.terminal_colors import tcolors as TC# Enable terminal colors
+
+# Importing libs
+from rich.console import Console
+console = Console()
 
 # Calculation functions
 def binary_addition(bin1, bin2):
@@ -48,7 +51,7 @@ def binary_addition(bin1, bin2):
 
     # Check if the result exceeds 8 bits
     if len(result) > 8:
-        raise ValueError(f'{TC.FAIL}\n| [ Binary addition result exceeds 8 bits ]\n{TC.ENDC}')
+        raise ValueError('[ Binary addition result exceeds 8 bits ]')
 
     # Pad the result with leading zeros to make it 8 bits long
     result = result.zfill(8)
@@ -62,7 +65,7 @@ def binary_subtraction(bin1, bin2):
     
     # Check if the second binary number is greater than the first
     if int_bin2 > int_bin1:
-        raise ValueError(f'{TC.FAIL}\n| [ Binary subtraction result is negative ]{TC.ENDC}\n')
+        raise ValueError('[ Binary subtraction result is negative ]')
 
     # Check if the second binary number is zero
     if all(bit == '0' for bit in bin2):
@@ -133,7 +136,7 @@ def binary_multiplication(bin1, bin2):
 
     # Ensure result is 8 bits long
     if len(result) > 8:
-        raise ValueError(f'{TC.FAIL}\n| [ Binary addition result exceeds 8 bits ]\n{TC.ENDC}')
+        raise ValueError('[ Binary addition result exceeds 8 bits ]')
     else:
         result = result.zfill(8)
 
@@ -144,16 +147,16 @@ def binary_calculation_BA(first_b_num:str, second_b_num:str, choice):
     match choice:
         case 1:
             try:
-                print(f'{TC.OKGREEN}\n| [Binary result]: The addition of {first_b_num} + {second_b_num} = {binary_addition(first_b_num, second_b_num)}\n{TC.ENDC}')
+                console.print(f'\n[bold][orange1][cyan]| [Binary result]: [green]{first_b_num}[/][/] + [green]{second_b_num}[/] = [green]{binary_addition(first_b_num, second_b_num)}[/][/]\n')
             except ValueError as e:
-                print(f'{TC.FAIL}\n| * ERROR * |{TC.ENDC}', e)
+                console.print(f'\n[bold][red]| ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 2:
             try:
-                print(f'{TC.OKGREEN}\n| [Binary result]: The subtraction of {first_b_num} - {second_b_num} = {binary_subtraction(first_b_num, second_b_num)}\n{TC.ENDC}')
+                console.print(f'\n[bold][orange1][cyan]|| [Binary result]: [green]{first_b_num}[/][/] - [green]{second_b_num}[/] = [green]{binary_subtraction(first_b_num, second_b_num)}[/][/]\n')
             except ValueError as e:
-                print(f'{TC.FAIL}\n| * ERROR * |{TC.ENDC}', e)
+                console.print(f'\n[bold][red]| ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 3:
             try:
-                print(f'{TC.OKGREEN}\n| [Binary result]: The multiplication of {first_b_num} * {second_b_num} = {binary_multiplication(first_b_num, second_b_num)}\n{TC.ENDC}')
+                console.print(f'\n[bold][orange1][cyan]|| [Binary result]: [green]{first_b_num}[/][/] * [green]{second_b_num}[/] = [green]{binary_multiplication(first_b_num, second_b_num)}[/][/]\n')
             except ValueError as e:
-                print(f'{TC.FAIL}\n| * ERROR * |{TC.ENDC}', e)
+                console.print(f'\n[bold][red]| ERROR -> [orange1][underline]{e}[/][/][/]\n')
