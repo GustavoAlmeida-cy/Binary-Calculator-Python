@@ -3,19 +3,19 @@ import scripts.calc_functions  as CF# Bring the calculation functions
 import scripts.basic_functions as BF # Bring the basic functions
 
 # Importing libs
-from rich.console import Console
+from rich.console import Console # Add a colorfull and more stylish terminal comands
 console = Console()
 
-from rich.traceback import install
+from rich.traceback import install # Add a error message more stylesh
 install()
 
-from rich.markdown import Markdown
+from rich.markdown import Markdown # Add a markdown support
 
 # Building a markdown title and footer
-title = '# 🔥 **BINARY CALCULATOR** 🔥'
+title = '# 🔥 BINARY CALCULATOR 🔥'
 mdtitle = Markdown(title)
 
-footer = '# 🔥 **PROGRAM END** 🔥'
+footer = '# 🔥 PROGRAM END 🔥'
 mdfooter = Markdown(footer)
 
 # Main function
@@ -60,7 +60,7 @@ def app():
 # Program start
 if __name__ == "__main__":
     # Program title
-    console.print(mdtitle)
+    console.print(mdtitle, '\n')
 
     choice = "Y"
     while choice == "Y":
@@ -76,4 +76,4 @@ if __name__ == "__main__":
                 controller = BF.multiple_choice_YN(choice)
                 
     # Program footer
-    console.print(mdfooter)
+    console.print('\n', mdfooter)

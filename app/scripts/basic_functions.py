@@ -16,6 +16,6 @@ def is_binary(input_str): # Check if the input string represents a valid binary 
         return False
         
     for char in input_str:
-        if char not in '01.':
+        if char not in '01':
             return False
     return True

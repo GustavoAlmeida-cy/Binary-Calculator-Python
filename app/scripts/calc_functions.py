@@ -1,7 +1,5 @@
-# Importing scripts
-
 # Importing libs
-from rich.console import Console
+from rich.console import Console # Add a colorfull and more stylish terminal comands
 console = Console()
 
 # Calculation functions
@@ -147,16 +145,16 @@ def binary_calculation_BA(first_b_num:str, second_b_num:str, choice):
     match choice:
         case 1:
             try:
-                console.print(f'\n[bold][orange1][cyan]| 😎 [Binary result]: [green]{first_b_num}[/][/] + [green]{second_b_num}[/] = [green]{binary_addition(first_b_num, second_b_num)}[/][/]\n')
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] + [green]{second_b_num}[/] = [green]{binary_addition(first_b_num, second_b_num)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 2:
             try:
-                console.print(f'\n[bold][orange1][cyan]| 😎 [Binary result]: [green]{first_b_num}[/][/] - [green]{second_b_num}[/] = [green]{binary_subtraction(first_b_num, second_b_num)}[/][/]\n')
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] - [green]{second_b_num}[/] = [green]{binary_subtraction(first_b_num, second_b_num)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 3:
             try:
-                console.print(f'\n[bold][orange1][cyan]| 😎 [Binary result]: [green]{first_b_num}[/][/] * [green]{second_b_num}[/] = [green]{binary_multiplication(first_b_num, second_b_num)}[/][/]\n')
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] * [green]{second_b_num}[/] = [green]{binary_multiplication(first_b_num, second_b_num)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
