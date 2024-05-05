@@ -2,6 +2,11 @@
 from rich.console import Console # Add a colorfull and more stylish terminal comands
 console = Console()
 
+# Convert functions
+def binary_to_decimal(binary_num:str): # Converts binary numbers into decimal numbers
+    decimal_num = int(binary_num, 2)
+    return decimal_num
+
 # Calculation functions
 def binary_addition(bin1, bin2, length):
     length = int(float(length))
@@ -179,16 +184,19 @@ def binary_calculation_BA(first_b_num:str, second_b_num:str, choice, length):
     match choice:
         case 1:
             try:
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Decimal result ]: [purple]{binary_to_decimal(first_b_num)}[/][/] + [purple]{binary_to_decimal(second_b_num)}[/] = [purple]{binary_to_decimal(binary_addition(first_b_num, second_b_num, length))}[/][/]')
                 console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] + [green]{second_b_num}[/] = [green]{binary_addition(first_b_num, second_b_num, length)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 2:
             try:
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Decimal result ]: [purple]{binary_to_decimal(first_b_num)}[/][/] - [purple]{binary_to_decimal(second_b_num)}[/] = [purple]{binary_to_decimal(binary_subtraction(first_b_num, second_b_num, length))}[/][/]')
                 console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] - [green]{second_b_num}[/] = [green]{binary_subtraction(first_b_num, second_b_num, length)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 3:
             try:
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Decimal result ]: [purple]{binary_to_decimal(first_b_num)}[/][/] * [purple]{binary_to_decimal(second_b_num)}[/] = [purple]{binary_to_decimal(binary_multiplication(first_b_num, second_b_num, length))}[/][/]')
                 console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] * [green]{second_b_num}[/] = [green]{binary_multiplication(first_b_num, second_b_num, length)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
