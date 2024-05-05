@@ -20,6 +20,22 @@ mdfooter = Markdown(footer)
 
 # Main function
 def app():
+    console.print(f'\n[bold][cyan]| 🤓 How much bits do you want to deal with? [italic][orange1](the default value is 8 bits)[/][/][/]')
+    bit_length = console.input((f'\n[bold][cyan]| : [/][/]'))
+
+    bit_length = bit_length if bit_length else "8"
+
+    bit_lenght_logic_value = BF.bit_length_check(bit_length)
+
+    if bit_lenght_logic_value: # Validates whether the option chosen by the user is correct
+        while bit_lenght_logic_value:
+            console.print(f'\n[bold][red]| 😕 [underline]Invalid length! Please try again.[/][/][/]')
+            bit_length = console.input((f'\n[bold][cyan]| : [/][/]'))
+
+            bit_length = bit_length if bit_length else "8"
+
+            bit_lenght_logic_value = BF.bit_length_check(bit_length)
+
     # Multiple choice message and logic
     console.print(f'\n[bold][cyan]| 🤓 What type of calculation do you wish? [italic][orange1](type the correct number corresponding to the right option)[/][/][/]')
     choice = console.input((f'\n[bold][cyan][orange1]| 1. Addition\n| 2. Subtraction\n| 3. Multiplication\n\n[/]| : [/][/]'))
@@ -51,11 +67,11 @@ def app():
     # Logic of choice to choose what type of calculation the user wish
     match choice:
         case 1:
-            CF.binary_calculation_BA(first_num, second_num, 1)
+            CF.binary_calculation_BA(first_num, second_num, 1, bit_length)
         case 2:
-            CF.binary_calculation_BA(first_num, second_num, 2)
+            CF.binary_calculation_BA(first_num, second_num, 2, bit_length)
         case 3:
-            CF.binary_calculation_BA(first_num, second_num, 3)
+            CF.binary_calculation_BA(first_num, second_num, 3, bit_length)
 
 # Program start
 if __name__ == "__main__":

@@ -1,4 +1,19 @@
 # Functions
+def bit_length_check(length): # Check the bit_length value
+    if not length or length == " " :
+        return True
+
+    if not length.replace('.', '', 1).isdigit():
+        return True
+
+    length = int(float(length))
+    
+    if length == 0 or length <= 0:
+        return True
+    else:    
+        return False
+
+
 def multiple_choice_logic(choice): # Check the option chosen by the user
     if choice != '1' and choice != '2' and choice != '3':
         return True

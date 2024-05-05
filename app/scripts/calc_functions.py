@@ -3,18 +3,26 @@ from rich.console import Console # Add a colorfull and more stylish terminal com
 console = Console()
 
 # Calculation functions
-def binary_addition(bin1, bin2):
+def binary_addition(bin1, bin2, length):
+    length = int(float(length))
+
+    original_length = length
+
+    # Verify if the length is less than or equal to 0
+    if length <= 0:
+        raise ValueError("[ The length cannot be less than 1 bit! ]")
+
     # Check if both binary numbers are all zeros
     if all(bit == '0' for bit in bin1) and all(bit == '0' for bit in bin2):
-        return '00000000'
+        return '0' * length
 
     # Check if bin1 is all zeros
     if all(bit == '0' for bit in bin1):
-        return bin2.zfill(8)
+        return bin2.zfill(length)
 
     # Check if bin2 is all zeros
     if all(bit == '0' for bit in bin2):
-        return bin1.zfill(8)
+        return bin1.zfill(length)
 
     # Remove leading zeros
     bin1 = bin1.lstrip('0')
@@ -47,16 +55,30 @@ def binary_addition(bin1, bin2):
     if carry:
         result = '1' + result
 
-    # Check if the result exceeds 8 bits
-    if len(result) > 8:
-        raise ValueError('[ Binary addition result exceeds 8 bits ]')
+    length = original_length
 
-    # Pad the result with leading zeros to make it 8 bits long
-    result = result.zfill(8)
+    # Check if the result exceeds length bits
+    if len(result) > length:
+        raise ValueError(f'[ Binary addition result exceeds {original_length} bits! ]')
+
+    # Pad the result with leading zeros to make it length bits long
+    result = result.zfill(length)
 
     return result
 
-def binary_subtraction(bin1, bin2):
+def binary_subtraction(bin1, bin2, length):
+    length = int(float(length))
+
+    original_length = length
+
+    # Verify if the length is less than or equal to 0
+    if length <= 0:
+        raise ValueError("[ The length cannot be less than 1 bit! ]")
+
+    # Check if both binary numbers are all zeros
+    if all(bit == '0' for bit in bin1) and all(bit == '0' for bit in bin2):
+        return '0' * length
+
     # Convert binary strings to integers for comparison
     int_bin1 = int(bin1, 2)
     int_bin2 = int(bin2, 2)
@@ -67,7 +89,7 @@ def binary_subtraction(bin1, bin2):
 
     # Check if the second binary number is zero
     if all(bit == '0' for bit in bin2):
-        return bin1.zfill(8)
+        return bin1.zfill(length)
     
     # Pad the binary strings with zeros to make them of equal length
     length = max(len(bin1), len(bin2))
@@ -96,9 +118,19 @@ def binary_subtraction(bin1, bin2):
         # Append the result to the beginning of the result string
         result = str(current_diff) + result
     
-    return result.zfill(8)
+    length = original_length
 
-def binary_multiplication(bin1, bin2):
+    return result.zfill(length)
+
+def binary_multiplication(bin1, bin2, length):
+    length = int(float(length))
+
+    original_length = length
+
+    # Verify if the length is less than or equal to 0
+    if length <= 0:
+        raise ValueError("[ The length cannot be less than 1 bit! ]")
+
     # Function to perform binary addition
     def binary_add(a, b):
         result = []
@@ -113,9 +145,9 @@ def binary_multiplication(bin1, bin2):
             result.append(str(carry))
         return ''.join(result[::-1])
 
-    # Check if one of both binary numbers are all zeros
-    if all(bit == '0' for bit in bin1) or all(bit == '0' for bit in bin2):
-        return '00000000'
+    # Check if both binary numbers are all zeros
+    if all(bit == '0' for bit in bin1) and all(bit == '0' for bit in bin2):
+        return '0' * length
 
     # Remove leading zeros
     bin1 = bin1.lstrip('0')
@@ -123,7 +155,7 @@ def binary_multiplication(bin1, bin2):
 
     # If after removing leading zeros, either of the inputs is empty, return '0'
     if not bin1 or not bin2:
-        return '0'
+        return '0' * length
 
     # Multiply each bit of bin1 with entire bin2 and shift the result
     result = "0"
@@ -132,29 +164,31 @@ def binary_multiplication(bin1, bin2):
             temp = bin2 + "0" * i
             result = binary_add(result, temp)
 
-    # Ensure result is 8 bits long
-    if len(result) > 8:
-        raise ValueError('[ Binary addition result exceeds 8 bits ]')
+    length = original_length
+
+    # Check if the result exceeds length bits
+    if len(result) > length:
+        raise ValueError(f'[ Binary addition result exceeds {original_length} bits! ]')
     else:
-        result = result.zfill(8)
+        result = result.zfill(length)
 
     return result
 
 # Multiple choice function for calculations
-def binary_calculation_BA(first_b_num:str, second_b_num:str, choice):
+def binary_calculation_BA(first_b_num:str, second_b_num:str, choice, length):
     match choice:
         case 1:
             try:
-                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] + [green]{second_b_num}[/] = [green]{binary_addition(first_b_num, second_b_num)}[/][/]\n')
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] + [green]{second_b_num}[/] = [green]{binary_addition(first_b_num, second_b_num, length)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 2:
             try:
-                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] - [green]{second_b_num}[/] = [green]{binary_subtraction(first_b_num, second_b_num)}[/][/]\n')
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] - [green]{second_b_num}[/] = [green]{binary_subtraction(first_b_num, second_b_num, length)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
         case 3:
             try:
-                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] * [green]{second_b_num}[/] = [green]{binary_multiplication(first_b_num, second_b_num)}[/][/]\n')
+                console.print(f'\n[bold][orange1][cyan]| 😎 [ Binary result ]: [green]{first_b_num}[/][/] * [green]{second_b_num}[/] = [green]{binary_multiplication(first_b_num, second_b_num, length)}[/][/]\n')
             except ValueError as e:
                 console.print(f'\n[bold][red]| 😕 ERROR -> [orange1][underline]{e}[/][/][/]\n')
