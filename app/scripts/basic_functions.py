@@ -1,5 +1,5 @@
-# Functions
-def bit_length_check(length): # Check the bit_length value
+# Funções
+def bit_length_check(length): # Verifica a quantidade de bits escolhida
     if not length or length == " " :
         return True
 
@@ -13,19 +13,19 @@ def bit_length_check(length): # Check the bit_length value
     else:    
         return False
 
-def multiple_choice_logic(choice): # Check the option chosen by the user
+def multiple_choice_logic(choice): # Verifica a opção de multipla escolha feita pelo usuário
     if choice != '1' and choice != '2' and choice != '3':
         return True
     else:
         return False
 
-def multiple_choice_YN(choice): # Check the option chosen by the user
-    if choice != 'Y' and choice != 'N':
+def multiple_choice_YN(choice): # Verifica a opção de escolha sim/não feita pelo usuário
+    if choice != 'S' and choice != 'N':
         return True
     else:
         return False
     
-def is_binary(input_str): # Check if the input string represents a valid binary number
+def is_binary(input_str): # Verifica se os números digitados pelo usuário são válidos
     if input_str == "" or input_str == " ":
         return False
         

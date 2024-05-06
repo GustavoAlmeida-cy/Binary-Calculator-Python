@@ -1,70 +1,69 @@
-# Importing scripts
-import scripts.calc_functions  as CF# Bring the calculation functions
-import scripts.basic_functions as BF # Bring the basic functions
+# Importando scripts
+import scripts.calc_functions  as CF # Funções de cálculo
+import scripts.basic_functions as BF # Funções basicas
 
-# Importing libs
-from rich.console import Console # Add a colorfull and more stylish terminal comands
+# Importando bibliotecas
+from rich.console import Console # Adicionando a função de console da biblioteca
 console = Console()
 
-from rich.traceback import install # Add a error message more stylesh
+from rich.traceback import install # Adicionando uma melhor menssagem de erro pela biblioteca
 install()
 
-from rich.markdown import Markdown # Add a markdown support
+from rich.markdown import Markdown # Adicionando suporte a Markdown pela biblioteca
 
-# Building a markdown title and footer
-title = '# 🔥 BINARY CALCULATOR 🔥'
+# Construindo título e rodapé do programa usando Markdown
+title = '# 🔥 CALCULADORA BINÁRIA 🔥'
 mdtitle = Markdown(title)
 
-footer = '# 🔥 PROGRAM END 🔥'
+footer = '# 🔥 FIM DO PROGRAMA 🔥'
 mdfooter = Markdown(footer)
 
-# Main function
+# Função principal
 def app():
-    console.print(f'\n[bold][cyan]| 🤓 How much bits do you want to deal with? [italic][orange1](the default value is 8 bits)[/][/][/]')
+    # Opção de definição de quantidade de bits pelo usuário
+    console.print(f'\n[bold][cyan]| 🤓 Quantos bits você deseja usar para o cálculo? [italic][orange1](O valor padrão é 8 bits)[/][/][/]')
     bit_length = console.input((f'\n[bold][cyan]| : [/][/]'))
 
     bit_length = bit_length if bit_length else "8"
-
     bit_lenght_logic_value = BF.bit_length_check(bit_length)
 
-    if bit_lenght_logic_value: # Validates whether the option chosen by the user is correct
+    if bit_lenght_logic_value: # Valida se a quantidade de bits escolhida
         while bit_lenght_logic_value:
-            console.print(f'\n[bold][red]| 😕 [underline]Invalid length! Please try again.[/][/][/]')
+            console.print(f'\n[bold][red]| 😕 [underline]Quantidade de bits inválida! Por favor, digite outro valor.[/][/][/]')
             bit_length = console.input((f'\n[bold][cyan]| : [/][/]'))
 
             bit_length = bit_length if bit_length else "8"
-
             bit_lenght_logic_value = BF.bit_length_check(bit_length)
 
-    # Multiple choice message and logic
-    console.print(f'\n[bold][cyan]| 🤓 What type of calculation do you wish? [italic][orange1](type the correct number corresponding to the right option)[/][/][/]')
-    choice = console.input((f'\n[bold][cyan][orange1]| 1. Addition\n| 2. Subtraction\n| 3. Multiplication\n\n[/]| : [/][/]'))
+    # Opção de multipla escolha entre os tipos de cálculos
+    console.print(f'\n[bold][cyan]| 🤓 Qual o tipo de cálculo você deseja? [italic][orange1](Digite o número correspondente a opção desejada)[/][/][/]')
+    choice = console.input((f'\n[bold][cyan][orange1]| 1. Adição\n| 2. Subtração\n| 3. Multiplicação\n\n[/]| : [/][/]'))
 
     mult_ch_logic_value = BF.multiple_choice_logic(choice)
 
-    if mult_ch_logic_value: # Validates whether the option chosen by the user is correct
+    if mult_ch_logic_value: # Valida a opção de escolha do usuário
         while mult_ch_logic_value:
-            console.print(f'\n[bold][red]| 😕 [underline]Invalid choice! Please type other option.[/][/][/]')
-            choice = console.input((f'\n[bold][cyan][orange1]| 1. Addition\n| 2. Subtraction\n| 3. Multiplication\n\n[/]| : [/][/]'))
+            console.print(f'\n[bold][red]| 😕 [underline]Escolha inválida! Por favor, tente novamente.[/][/][/]')
+            choice = console.input((f'\n[bold][cyan][orange1]| 1. Adição\n| 2. Subtração\n| 3. Multiplicação\n\n[/]| : [/][/]'))
             mult_ch_logic_value = BF.multiple_choice_logic(choice)
 
     choice = int(choice)
-    msg = ['Addition', 'Subtraction', 'Multiplication']
+    msg = ['Adição', 'Subtração', 'Multiplicação'] # Mensagem da opção escolhida
 
-    console.print(f'\n[bold][orange1]| [ {msg[choice - 1]} ][/][/]')
+    console.print(f'\n[bold][orange1]| [ {msg[choice - 1]} ][/][/]') # Escolha da mensagem com base na escolha do usuário
 
-    # Reading user inputs
-    first_num = console.input(f'\n[bold][cyan]| Type the first number: [/][/]')
-    second_num = console.input(f'\n[bold][cyan]| Type the second number: [/][/]')
+    # Lendo os números obtidos pelo usuário
+    first_num = console.input(f'\n[bold][cyan]| Digite o primeiro número: [/][/]')
+    second_num = console.input(f'\n[bold][cyan]| Digite o segundo número: [/][/]')
 
-    # Check if the input is a valid binary number
+    # Verifica se os números são válidos
     if not BF.is_binary(first_num) or not BF.is_binary(second_num):
         while not BF.is_binary(first_num) or not BF.is_binary(second_num):
-            console.print(f'\n[bold][red]| 😕 [underline]Invalid numbers! Please type other numbers.[/][/][/]')
-            first_num = console.input(f'\n[bold][cyan]| Type the first number: [/][/]')
-            second_num = console.input(f'\n[bold][cyan]| Type the second number: [/][/]')
+            console.print(f'\n[bold][red]| 😕 [underline]Número inválido! Por favor, digite outro número.[/][/][/]')
+            first_num = console.input(f'\n[bold][cyan]| Digite o primeiro número: [/][/]')
+            second_num = console.input(f'\n[bold][cyan]| Digite o segundo número: [/][/]')
 
-    # Logic of choice to choose what type of calculation the user wish
+    # Lógica de escolha do tipo de cálculo
     match choice:
         case 1:
             CF.binary_calculation_BA(first_num, second_num, 1, bit_length)
@@ -73,22 +72,23 @@ def app():
         case 3:
             CF.binary_calculation_BA(first_num, second_num, 3, bit_length)
 
-# Program start
+# Início do programa
 if __name__ == "__main__":
-    # Program title
+    # Título do programa
     console.print(mdtitle, '\n')
 
-    choice = "Y"
-    while choice == "Y":
+    choice = "S" # Declarando variável de escolha
+    
+    while choice == "S": # Laço de repetição do programa
         app()
 
-        choice = console.input(f"[bold][cyan]| 🤔 Would you like to do another calculation? [italic][orange1](Y/N)\n\n[/][/]| : ").upper()
+        choice = console.input(f"[bold][cyan]| 🤔 Gostaria de realizar outro cálculo? [italic][orange1](S/N)\n\n[/][/]| : ").upper()
         controller = BF.multiple_choice_YN(choice)
 
-        if controller: # Validates whether the option chosen by the user is correct
+        if controller: # Valida se a opção escolhida pelo usuário
             while controller:
-                console.print(f'\n[bold][red]| 😕 [underline]Invalid choice! Please try again.[/][/][/]')
-                choice = console.input(f"\n[bold][cyan]| 🤔 Would you like to do another calculation? [italic][orange1](Y/N)\n\n[/][/]| : ").upper()
+                console.print(f'\n[bold][red]| 😕 [underline]Escolha inválida! Por favor, tente novamente.[/][/][/]')
+                choice = console.input(f"\n[bold][cyan]| 🤔 Gostaria de realizar outro cálculo? [italic][orange1](S/N)\n\n[/][/]| : ").upper()
                 controller = BF.multiple_choice_YN(choice)
                 
     # Program footer
