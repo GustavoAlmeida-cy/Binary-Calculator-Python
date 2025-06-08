@@ -62,6 +62,14 @@ python main.py
 
 ---
 
+## 🖼️ Demonstração
+
+Abaixo está uma captura de tela do funcionamento da calculadora binária no terminal:
+
+![Demonstração da Calculadora Binária](/app/images/screenshot-1.png)
+
+---
+
 ## 📄 Licença
 
 Este projeto está licenciado sob a licença **MIT**. Consulte o arquivo `LICENSE` para mais informações.
